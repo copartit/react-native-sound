@@ -43,6 +43,8 @@ Sound.prototype.isLoaded = function() {
   return this._loaded;
 };
 
+
+
 Sound.prototype.play = function(onEnd) {
   if (this._loaded) {
     RNSound.play(this._key, (successfully) => onEnd && onEnd(successfully));
@@ -67,6 +69,13 @@ Sound.prototype.stop = function() {
 Sound.prototype.release = function() {
   if (this._loaded) {
     RNSound.release(this._key);
+  }
+  return this;
+};
+
+Sound.prototype.reset = function() {
+  if (this._loaded && IsAndroid) {
+    RNSound.reset(this._key);
   }
   return this;
 };

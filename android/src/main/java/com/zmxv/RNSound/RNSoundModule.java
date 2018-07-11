@@ -134,6 +134,14 @@ public class RNSoundModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
+  public void reset(final Double key) {
+    MediaPlayer player = this.playerPool.get(key);
+    if (player != null) {
+      player.reset();
+    }
+  }
+
+  @ReactMethod
   public void setCurrentTime(final Integer key, final Float sec) {
     MediaPlayer player = this.playerPool.get(key);
     if (player != null) {
